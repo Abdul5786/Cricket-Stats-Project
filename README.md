@@ -1,48 +1,24 @@
-Cricket Team Stats API
-This project provides a REST API for managing cricket player and match details. It allows users to perform CRUD operations on player details, as well as retrieve player information based on various criteria.
+Cricket Team Stats Project
 
-CRUD Operations
-Create Player Details:
+The Cricket Team Stats project is a RESTful API-based application designed to manage and retrieve cricket player and match data efficiently. As a member of a cricket board's technical expertise team, the aim is to provide a robust system to handle CRUD operations for player details, perform various queries to retrieve player and match data, and ensure seamless management of cricket statistics.
 
-Endpoint: /api/players
-Method: POST
-Description: Inserts player details into the database.
-Request Body: Player details including name, date of birth, and match ID.
-Update Player Details:
+Key Features:
 
-Endpoint: /api/players/{playerId}
-Method: PUT
-Description: Updates existing player details.
-Path Variable: Player ID to identify the player to be updated.
-Request Body: Updated player details.
-Delete Player Details:
+CRUD Operations:
 
-Endpoint: /api/players/{playerId}
-Method: DELETE
-Description: Deletes player details from the database.
-Path Variable: Player ID to identify the player to be deleted.
-Get Operations
-Get Player Details by ID:
+Create, update, and delete player details.
+Insert and manage match details associated with players.
+GET Operations:
 
-Endpoint: /api/players/{playerId}
-Method: GET
-Description: Retrieves player details based on the provided player ID.
-Path Variable: Player ID to identify the player to be retrieved.
-Get Player List with Average Score More Than X:
+Retrieve player details by player ID.
+Get a list of players with an average score more than a specified threshold.
+Retrieve a list of players from a specific country.
+Fetch a sorted list of players based on average scores, with older players given priority in case of ties.
+Player Details:
 
-Endpoint: /api/players?averageScoreMoreThan={X}
-Method: GET
-Description: Retrieves a list of players with an average score greater than X.
-Query Parameter: X represents the minimum average score threshold.
-Get Player List By Country:
+Each player entry includes unique ID, name, date of birth, country, and average score.
+Player details are stored in a dedicated database table (player_details) with appropriate entity mappings.
+Match Details:
 
-Endpoint: /api/players?country={countryName}
-Method: GET
-Description: Retrieves a list of players belonging to a specific country.
-Query Parameter: Country name to filter players by country.
-Get List of Players Sorted by Average Score:
-
-Endpoint: /api/players?averageScoreMoreThan={Y}&sortByAvgScore=true
-Method: GET
-Description: Retrieves a list of players with an average score greater than Y, sorted by average score. If two players have the same average score, the older player gets priority.
-Query Parameter: Y represents the minimum average score threshold.
+Match entries contain a unique ID, score, and stadium information.
+Matches are associated with players using a many-to-one relationship, allowing easy retrieval of match details for each player.
