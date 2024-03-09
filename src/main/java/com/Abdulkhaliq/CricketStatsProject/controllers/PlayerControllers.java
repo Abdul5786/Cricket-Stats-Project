@@ -2,6 +2,8 @@ package com.Abdulkhaliq.CricketStatsProject.controllers;
 
 
 import com.Abdulkhaliq.CricketStatsProject.config.AppConstants;
+import com.Abdulkhaliq.CricketStatsProject.entities.Player;
+import com.Abdulkhaliq.CricketStatsProject.payloads.ApiResponse;
 import com.Abdulkhaliq.CricketStatsProject.payloads.PlayerDto;
 import com.Abdulkhaliq.CricketStatsProject.services.PlayerServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +53,7 @@ public class PlayerControllers
            PlayerDto playerById = playerServices.getPlayerById(playerId);
            return ResponseEntity.ok(playerById);
        }
+       @PutMapping(value ="updatePlayer/{playerId}")
       public ResponseEntity<PlayerDto> updatePlayer(@PathVariable Integer playerId,@RequestBody PlayerDto playerDto)
       {
           PlayerDto updatedPlayer = playerServices.updatePlayer(playerId, playerDto);
@@ -66,6 +69,12 @@ public class PlayerControllers
         List<PlayerDto> playerDtos = playerServices.listOfPlayerInSortedOrderWithAvgMoreThanY(y, pageNumber, pageSize);
         return ResponseEntity.ok(playerDtos);
     }
-
+      @DeleteMapping(value = "deletePlayer/{playerId}")
+     public ResponseEntity<ApiResponse> deletePlayerById(@PathVariable Integer playerId)
+     {
+         String s = playerServices.deletePlayerById(playerId);
+         ApiResponse apiResponse = new ApiResponse(s, true);
+         return ResponseEntity.ok(apiResponse);
+     }
 
 }

@@ -16,8 +16,6 @@ public class MatchesControllers
        @Autowired
        private MatchServices matchServices;
 
-//       @Autowired
-//       private PlayerServices playerServices
        @PostMapping(value = "/addPlayerMatches/{playerId}")
        public ResponseEntity<MatchesDto> addMatchesOfPlayers(@PathVariable Integer playerId, @RequestBody MatchesDto matchesDto)
        {
