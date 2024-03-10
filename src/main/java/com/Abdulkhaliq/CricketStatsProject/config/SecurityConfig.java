@@ -1,6 +1,7 @@
 package com.Abdulkhaliq.CricketStatsProject.config;
 
 
+import com.Abdulkhaliq.CricketStatsProject.payloads.Roles;
 import com.Abdulkhaliq.CricketStatsProject.security.JwtAuthenticationEntryPoint;
 import com.Abdulkhaliq.CricketStatsProject.security.JwtAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,18 +43,17 @@ public class SecurityConfig
        http.csrf(csrf -> csrf.disable())
                .cors(cors->cors.disable())
                .authorizeHttpRequests(auth->auth
-                       .requestMatchers("/auth/Login").permitAll()
+                       .requestMatchers("/api/create-admin","/api/create-user","/auth/Login").permitAll()
                        .requestMatchers("/api/matches/addPlayerMatches"
                                ,"/api/player/addPlayer"
-                               ,"/api/player/playerListAvgMoreThanX/**",
+                               ,"/api/player/playerListAvgMoreThanX",
                                "/api/player/getPlayerByCountryName",
                                "/api/player/getById/","/api/player/updatePlayer",
-                               "/api/player/playerListAvgMoreThanY/**",
-                               "/api/player/deletePlayer")
-                       .hasAuthority("ADMIN")
-                       .requestMatchers("/api/player/api/matches/playerListAvgMoreThanX"
-                               ,"/api/player/getPlayerByCountryName/**"  // only User can call this apis.
-                               ,"/api/player/playerListAvgMoreThanY/**").hasAuthority("USER").anyRequest().authenticated())
+                               "/api/player/playerListAvgMoreThanY",
+                               "/api/player/deletePlayer").hasAuthority("ADMIN")
+                       .requestMatchers("/api/player/playerListAvgMoreThanX"
+                               ,"/api/player/getPlayerByCountryName/"  // only User can call this apis.
+                               ,"/api/player/playerListAvgMoreThanY/").hasAuthority("USER").anyRequest().authenticated())
                .exceptionHandling(ex -> ex.authenticationEntryPoint(point))
                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
        http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);

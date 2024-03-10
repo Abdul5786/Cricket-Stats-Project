@@ -9,6 +9,7 @@ import com.Abdulkhaliq.CricketStatsProject.services.PlayerServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,7 +21,9 @@ public class PlayerControllers
       @Autowired
       private PlayerServices playerServices;
 
-      @PostMapping(value = "/addPlayer")
+
+       @PreAuthorize("hasRole('ADMIN')")
+       @PostMapping(value = "/addPlayer")
       public ResponseEntity<PlayerDto>  addPlayer(@RequestBody PlayerDto playerDto)
       {
           PlayerDto addedPlayer = playerServices.addPlayer(playerDto);
@@ -53,6 +56,7 @@ public class PlayerControllers
            PlayerDto playerById = playerServices.getPlayerById(playerId);
            return ResponseEntity.ok(playerById);
        }
+       @PreAuthorize("hasRole('ADMIN')")
        @PutMapping(value ="updatePlayer/{playerId}")
       public ResponseEntity<PlayerDto> updatePlayer(@PathVariable Integer playerId,@RequestBody PlayerDto playerDto)
       {
@@ -69,6 +73,7 @@ public class PlayerControllers
         List<PlayerDto> playerDtos = playerServices.listOfPlayerInSortedOrderWithAvgMoreThanY(y, pageNumber, pageSize);
         return ResponseEntity.ok(playerDtos);
     }
+       @PreAuthorize("hasRole('ADMIN')")
       @DeleteMapping(value = "deletePlayer/{playerId}")
      public ResponseEntity<ApiResponse> deletePlayerById(@PathVariable Integer playerId)
      {
