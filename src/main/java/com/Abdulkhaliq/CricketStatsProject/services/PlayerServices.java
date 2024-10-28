@@ -19,4 +19,7 @@ public interface PlayerServices
    List<PlayerDto> listOfPlayerInSortedOrderWithAvgMoreThanY(Integer y, Integer pageNumber,Integer pageSize);
    // this method will first compare AvgScoreOfPlayer and if two player have same AvgScore then it will give priority to older one
 
+   Integer playerHighestScore(Integer playerId);
+
+
 }

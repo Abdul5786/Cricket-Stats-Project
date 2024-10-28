@@ -122,6 +122,14 @@ public class PlayerServiceImpl implements PlayerServices
         return sortedPlayerDtos;
     }
 
+    @Override
+    public Integer playerHighestScore(Integer playerId)
+    {
+        Player player = playerRepo.findById(playerId).orElseThrow(() -> new RuntimeException("player not found"));
+
+
+    }
+
 
     public int calculateAge(Date dob)
    {                                 // calculating age of player from dob to current year dynamically
@@ -130,5 +138,11 @@ public class PlayerServiceImpl implements PlayerServices
        return Period.between(birthdate, currentDate).getYears();
    }
 
+        public Integer highestScore(Integer playerId)
+        {
+            List<Matches> allMatches = playerRepo.findAllMatches(playerId);
+                          allMatches.stream().filter(matches -> m.)
+
+        }
 
 }

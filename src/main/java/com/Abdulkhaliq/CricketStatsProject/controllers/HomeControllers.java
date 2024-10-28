@@ -34,8 +34,8 @@ public class HomeControllers
 
 
 
-    @GetMapping(value = "/all")
-//    @PreAuthorize("hasAuthority('')")
+    @GetMapping(value = "/getAllUsers")
+
     public ResponseEntity<List<User>> getAlluser()
     {
         List<User> allUser = userService.getAllUser();

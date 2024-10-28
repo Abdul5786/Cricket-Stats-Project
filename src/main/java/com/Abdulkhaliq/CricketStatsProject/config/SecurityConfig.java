@@ -69,23 +69,23 @@ public class SecurityConfig
       provider.setPasswordEncoder(passwordEncoder);
        return provider;
    }
+ }
+
+
+
+
+
 
 //   @Bean   // it is used to enable cors policy at global level
 //   public CorsConfiguration corsConfiguration()
 //   {
-//       CorsConfiguration corsConfiguration = new CorsConfiguration();
+////       CorsConfiguration corsConfiguration = new CorsConfiguration();
 //       corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
 //       corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
 //       corsConfiguration.setAllowCredentials(true);
 //       return corsConfiguration;
-//   }
+//
 
 
 
 
-
-
-
-
-
-}

@@ -1,6 +1,4 @@
 package com.Abdulkhaliq.CricketStatsProject.controllers;
-
-
 import com.Abdulkhaliq.CricketStatsProject.config.AppConstants;
 import com.Abdulkhaliq.CricketStatsProject.entities.Player;
 import com.Abdulkhaliq.CricketStatsProject.payloads.ApiResponse;
@@ -11,9 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-
 @RestController
 @RequestMapping("/api/player")
 public class PlayerControllers
@@ -81,5 +77,8 @@ public class PlayerControllers
          ApiResponse apiResponse = new ApiResponse(s, true);
          return ResponseEntity.ok(apiResponse);
      }
+
+
+
 
 }
